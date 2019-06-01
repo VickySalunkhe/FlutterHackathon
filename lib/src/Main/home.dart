@@ -3,6 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../constant_values.dart';
 import 'dart:math';
 import '../post.dart';
+import 'post_final.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -22,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    _initializeData(50);
+    _initializeData(20);
     super.initState();
   }
 
@@ -61,9 +63,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   indicatorColor: Colors.transparent,
                   indicatorSize: TabBarIndicatorSize.label,
                   tabs: ConstantValues.tabList.map((category) {
-                    return Tab(child: CircleAvatar(
-                      backgroundColor: Colors.red,
-                    ),);
+                    return Tab(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        child: Image.asset(
+                          ConstantValues.getUserImage(),
+                          width: 50,
+                          height:50,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    );
                   }).toList()),
               centerTitle: true,
               backgroundColor: ConstantValues.appBarBG),
@@ -80,11 +90,13 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _getListView(category) {
-    return ListView.builder(
-      itemCount: 50,
-      itemBuilder: (BuildContext context, int index){
-        return PostBody();
-      },
+    return StaggeredGridView.countBuilder(
+      crossAxisCount: 2,
+      itemCount: postData.length,
+      itemBuilder: (BuildContext context, int index) => PostBody(),
+      staggeredTileBuilder: (int index) => new StaggeredTile.fit(1),
+      mainAxisSpacing: 6.0,
+      crossAxisSpacing: 0.0,
     );
   }
 }

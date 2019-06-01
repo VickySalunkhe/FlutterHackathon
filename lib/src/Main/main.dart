@@ -3,6 +3,7 @@ import '../BottomNavigationBar/export_bnb.dart';
 import 'export_main.dart';
 import '../route.dart';
 import '../constant_values.dart';
+import 'create_post.dart';
 
 class MainScreen extends StatefulWidget {
   final int userID;
@@ -134,7 +135,8 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
       floatingActionButton: 
           FloatingActionButton(
         onPressed: () {
-          _createPostDialog();
+          Navigator.push(context, new MaterialPageRoute(builder: (context) => new CreatePost()));
+          //_createPostDialog();
         },
         child: Icon(
           Icons.mode_edit,

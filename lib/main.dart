@@ -6,8 +6,10 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
-      title: 'WritCo',
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Sprinters',
       theme: ThemeData(
         fontFamily: 'Roboto',
         primaryColor: Colors.white,

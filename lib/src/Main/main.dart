@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../BottomNavigationBar/export_bnb.dart';
 import 'export_main.dart';
-import '../route.dart';
 import '../constant_values.dart';
 import 'create_post.dart';
 
